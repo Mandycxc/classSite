@@ -24,9 +24,7 @@ let things = [{
 let randomIndex;
 let animating = false;
 
-function preload() {
-  img = loadImage('loading.jpg');
-}
+
 
 function setup(){
 	createCanvas(600, 600);
@@ -34,7 +32,6 @@ function setup(){
   textSize(32);
 
 text("click here to accept your faith", 50, 50);
-image(img, 0, 0);
 
 }
 

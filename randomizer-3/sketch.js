@@ -1,71 +1,152 @@
-
 let things = [{
-  event: "Watch Scary Movie",
-  condition: "at 12 am"
+  adjective: "Big",
+  color: "Red"
 }, {
-  event: "Order Food",
-  condition: "that's not on the menu"
+  adjective: "Big",
+  color: "Orange"
+},{
+  adjective: "Big",
+  color: "Yellow"
+},{
+  adjective: "Big",
+  color: "Green"
+},{
+  adjective: "Big",
+  color: "Blue"
+},{
+  adjective: "Big",
+  color: "Indigo"
+},{
+  adjective: "Big",
+  color: "Violet"
+},{
+  adjective: "Fast",
+  color: "Red"
 }, {
-  event: "Shout Out",
-  condition: " 'I am an idiot' in public"
+  adjective: "Fast",
+  color: "Orange"
+},{
+  adjective: "Fast",
+  color: "Yellow"
+},{
+  adjective: "Fast",
+  color: "Green"
+},{
+  adjective: "Fast",
+  color: "Blue"
+},{
+  adjective: "Fast",
+  color: "Indigo"
+},{
+  adjective: "Fast",
+  color: "Violet"
+},  {adjective: "Tiny",
+  color: "Red"
 }, {
-  event: "Do Push Up",
-  condition: "with one thinger"
+  adjective: "Tiny",
+  color: "Orange"
+},{
+  adjective: "Tiny",
+  color: "Yellow"
+},{
+  adjective: "Tiny",
+  color: "Green"
+},{
+  adjective: "Tiny",
+  color: "Blue"
+},{
+  adjective: "Tiny",
+  color: "Indigo"
+},{
+  adjective: "Tiny",
+  color: "Violet"
+},{  adjective: "Muscular",
+  color: "Red"
 }, {
-  event: "House Cleaning",
-  condition: "for a month"
-}, {
-  event: "Take out the trash",
-  condition: "for two weeks"
-}]
+  adjective: "Muscular",
+  color: "Orange"
+},{
+  adjective: "Muscular",
+  color: "Yellow"
+},{
+  adjective: "Muscular",
+  color: "Green"
+},{
+  adjective: "Muscular",
+  color: "Blue"
+},{
+  adjective: "Muscular",
+  color: "Indigo"
+},{
+  adjective: "Muscular",
+  color: "Violet"
+},];
 
 
 
 let randomIndex;
 let animating = false;
-let meme = [];
+let animal = [];
+let imageCounter = 0;
+let button;
 
-function preload(){
-  for (let i = 0; i <= 15; i++){
-    trolls[i] = loadImage(`Assets/meme_${i}.JPG`)
+function preload() {
+  for (let i = 0; i <= 5; i++) {
+    animal[i] = loadImage(`Assets/animal${i}.jpg`)
   }
 }
 
-function setup(){
-	createCanvas(600, 600);
-	background(200);
-  textSize(32);
+function setup() {
+  createCanvas(1000, 1000);
+  background(200);
+  textSize(24);
+  textAlign(CENTER);
+  imageMode(CENTER);
+  frameRate(12);
 
-text("click here to accept your faith", 50, 50);
-console.log(trolls);
+  text("What should I create?", 300,280);
+
+
+button = createButton("click to randomize");
+button.mousePressed(buttonPressed);
 }
 
 
-function draw(){
+function draw() {
 
-if (animating == true){
-    fill(128, 0,0);
-strokeWeight(1);
-  ellipse(random(width),random(height), random(50,200));
+  if (animating == true) {
+    clear();
+    image(animal[imageCounter], width / 2, height / 2);
+
+    if (imageCounter < animal.length-1) {
+      imageCounter++;
+      console.log(imageCounter);
+    } else {
+      imageCounter = 0;
+    }
+  }
 
 }
 
-}
-function randomizer(){
+function randomizer() {
   animating = false;
-    if (things[0]){
+  if (things[0]) {
+    // background(random(200, 255));
+    clear();
     randomIndex = int(random(things.length));
-   text(`${things[randomIndex].event}
-    ${things[randomIndex].condition}`, 50, 50);
-    // text(things[randomIndex].event + "'s favortute condition is " + things[randomIndex].condition, 50, 50);
-  things.splice(randomIndex, 1);
-  }else{
-    background(random(200,255));
+    image(random(animal), width / 2, height / 2);
+      text(`${things[randomIndex].adjective}
+    ${things[randomIndex].color}`, width/2, height - 60);
+    // text(things[randomIndex].adjective + "'s favortute color is " + things[randomIndex]color, 50, 50);
+    things.splice(randomIndex, 1);
+  } else {
+    background(random(200, 255));
     text("nothing left!", 50, 50);
   }
 }
-function mousePressed(){
-animating = true;
-setTimeout(randomizer,2000);
+
+function buttonPressed() {
+  animating = true;
+  setTimeout(randomizer, 2000);
 
 }

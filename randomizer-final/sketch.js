@@ -102,7 +102,7 @@ function setup() {
   cnv = createCanvas(1000, 1000);
   cnv.parent("#canvasDiv")
   background(246,249,194);
-  textSize(100);
+  textSize(45);
   textAlign(CENTER);
   imageMode(CENTER);
   frameRate(12);
